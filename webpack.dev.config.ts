@@ -3,8 +3,13 @@ import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ESLintPlugin from "eslint-webpack-plugin"
+import * as Webpack from "webpack";
+import * as WebpackDevServer from "webpack-dev-server";
 
-const config = {
+type DevConfig = Webpack.Configuration &
+    { devServer?: WebpackDevServer.Configuration | undefined }
+
+const config: DevConfig = {
     mode: "development",
     output: {
         publicPath: "/",
@@ -53,59 +58,3 @@ const config = {
 };
 
 export default config;
-
-// export default {
-//     entry: "./src/index.tsx",
-//     output: {
-//         path: path.resolve('build'),
-//         filename: '[name].js',
-//     },
-//
-//     resolve: {
-//         extensions: ['.ts', '.tsx', '.js', '.jsx'],
-//     },
-//
-//     mode: process.env.NODE_ENV || 'development',
-//
-//     optimization: {
-//         splitChunks: {
-//             chunks: 'all',
-//         },
-//     },
-//
-//     module: {
-//         rules: [
-//             {
-//                 test: /\.(ts|js)x?$/,
-//                 exclude: /node_modules/,
-//                 use: {
-//                     loader: "babel-loader",
-//                     options: {
-//                         presets: [
-//                             "@babel/preset-env",
-//                             "@babel/preset-react",
-//                             "@babel/preset-typescript",
-//                         ],
-//                     },
-//                 },
-//             },
-//         ],
-//     },
-//
-//     plugins: [
-//         // new CopyWebpackPlugin([path.resolve('./static/index.html')]),
-//         new CleanWebpackPlugin(),
-//         // new HtmlWebpackPlugin({
-//         //     template: './static/index.html',
-//         // }),
-//     ],
-//
-//     devServer: {
-//         static: path.join(__dirname, 'build'),
-//         port: 3000,
-//         compress: true,
-//         hot: true,
-//     },
-//
-//     devtool: 'cheap-module-source-map',
-// }
