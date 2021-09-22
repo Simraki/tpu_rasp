@@ -1,16 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+//
+// import { StoreProvider } from './contexts/StoreProvider';
+//
+// // import App from './App';
+//
+// const App = () => (
+//     <h1>
+//         My React and TypeScript App!!{" "}
+//         {new Date().toLocaleDateString()}
+//     </h1>
+// );
+//
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <StoreProvider store={}>
+//             <App/>
+//         </StoreProvider>
+//     </React.StrictMode>,
+//     document.getElementById('root')
+// );
 
-const App = () => (
-    <h1>
-        My React and TypeScript App!!{" "}
-        {new Date().toLocaleDateString()}
-    </h1>
-);
+import React from 'react';
+// import 'babel-polyfill'
+import { render } from 'react-dom'
+import App from './components/App'
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById("root")
-);
+render(<App/>, document.getElementById('root'))
