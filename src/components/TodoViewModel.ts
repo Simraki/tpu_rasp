@@ -1,31 +1,28 @@
-import { action, makeObservable, observable } from 'mobx'
-import { Todo } from '../entities/Todo'
+import { todoStore } from "../entities/TodoStore";
+import { ITodo } from "../entities/TodoMST";
 
 
 export class TodoViewModel {
 
     constructor() {
-        makeObservable(this, {
-            todos: observable,
-            add: action,
-            remove:action
-        })
+        // makeObservable(this, {
+        //     todos: observable,
+        //     add: action,
+        //     remove:action
+        // })
     }
 
-    todos: Todo[] = []
-
-    add(): Todo {
-        const newTodo = new Todo()
-        this.todos.push(newTodo)
-        return newTodo
+    add(): ITodo {
+        return todoStore.add()
     }
 
 
-    remove(todo: Todo): void {
-        const index = this.todos.indexOf(todo)
-        if (index > -1) {
-            this.todos.splice(index, 1)
-        }
+    remove(todo: ITodo): void {
+        todoStore.remove(todo)
+    }
+
+    get todos(): ITodo[] {
+        return todoStore.todos
     }
 
     // @action

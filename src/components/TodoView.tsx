@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { observer } from 'mobx-react'
-import { Todo } from "../entities/Todo";
 import { TodoViewModel } from "./TodoViewModel";
 import SingleTodoView from "./SingleTodoView";
+import { ITodo } from "../entities/TodoMST";
 
 interface ITodoViewProps {
     viewModel: TodoViewModel
@@ -18,7 +18,7 @@ const TodoView: FC<ITodoViewProps> = ({viewModel}) => {
                 {/*<button onClick={() => vm.load()}>Reload Todos</button>*/}
                 {/*<button onClick={() => vm.save()}>Save Todos</button>*/}
             </p>
-            {viewModel.todos.map((todo: Todo) => {
+            {viewModel.todos.map((todo: ITodo) => {
                 return (<SingleTodoView key={todo.id} viewModel={viewModel} todo={todo}/>)
             })}
         </div>
