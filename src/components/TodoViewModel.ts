@@ -1,55 +1,21 @@
-import { todoStore } from "../entities/TodoStore";
-import { ITodo } from "../entities/TodoMST";
+import RootStore from "../stores/RootStore";
+import { TodoStore } from "../stores/TodoStore";
+import { Todo } from "../stores/entities/Todo";
 
 
 export class TodoViewModel {
 
-    constructor() {
-        // makeObservable(this, {
-        //     todos: observable,
-        //     add: action,
-        //     remove:action
-        // })
+    todoStore: TodoStore = new RootStore().todoStore;
+
+    get todos(): Todo[] {
+        return this.todoStore.todoList
     }
 
-    add(): ITodo {
-        return todoStore.add()
+    add(): Todo {
+        return this.todoStore.add()
     }
 
-
-    remove(todo: ITodo): void {
-        todoStore.remove(todo)
+    remove(todo: Todo): void {
+        this.todoStore.remove(todo)
     }
-
-    get todos(): ITodo[] {
-        return todoStore.todos
-    }
-
-    // @action
-    // load(): void {
-    //     // if the browser has support for localStorage, try to retrieve the saved todos
-    //     if (window.localStorage) {
-    //         // const json = JSON.parse(window.localStorage.getItem("todos") || "[]")
-    //
-    //         // Notice: the todo => Todo.deserialize(todo) is an ES2015 arrow function
-    //         // this.todos = json.map(todo => Todo.deserialize(todo))
-    //     }
-    // }
-
-    // @action
-    // save(): void {
-    //     // are there invalid todos?
-    //     if (this.todos.filter(todo => !todo.isValid).length > 0) {
-    //         alert("Unable to save: There are invalid Todos.")
-    //     }
-    //
-    //     if (window.localStorage) {
-    //         // window.localStorage.setItem(
-    //         //     "todos",
-    //         //     JSON.stringify(
-    //         //         this.todos.map(todo => todo.serialize())
-    //         //     )
-    //         // )
-    //     }
-    // }
 }

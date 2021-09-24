@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
 import React, { FC } from "react";
 import { TodoViewModel } from "./TodoViewModel";
-import { ITodo } from "../entities/TodoMST";
+import { Todo } from "../stores/entities/Todo";
 
 interface ISingleTodoViewProps {
     viewModel: TodoViewModel,
-    todo: ITodo
+    todo: Todo
 }
 
 

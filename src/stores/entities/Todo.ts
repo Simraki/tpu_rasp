@@ -9,6 +9,10 @@ function nextId(): number {
 
 export class Todo {
 
+    id = nextId()
+    text = ''
+    done = false
+
     constructor() {
         makeObservable(this, {
             text: observable,
@@ -18,12 +22,6 @@ export class Todo {
             setText: action,
         })
     }
-
-    id = nextId()
-
-    text = ''
-
-    done = false
 
     get isValid(): boolean {
         return this.text !== ''
