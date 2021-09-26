@@ -3,7 +3,7 @@ import { action, computed, makeObservable, observable } from 'mobx'
 let _nextId = 0
 
 function nextId(): number {
-    _nextId++;
+    _nextId++
     return _nextId
 }
 

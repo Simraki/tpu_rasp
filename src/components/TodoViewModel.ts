@@ -1,11 +1,11 @@
-import RootStore from "../stores/RootStore";
-import { TodoStore } from "../stores/TodoStore";
-import { Todo } from "../stores/entities/Todo";
+import { Todo } from '../stores/entities/Todo'
+import { inject } from 'react-ioc'
+import { TodoStore } from '../stores/TodoStore'
 
 
 export class TodoViewModel {
 
-    todoStore: TodoStore = new RootStore().todoStore;
+    private todoStore = inject<TodoStore>(this, TodoStore)
 
     get todos(): Todo[] {
         return this.todoStore.todoList
