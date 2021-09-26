@@ -1,10 +1,5 @@
-import { action, computed, makeObservable, observable, reaction } from "mobx";
-import { Todo } from "./entities/Todo";
-
-// export type Todo = {
-//     task: string
-//     isComplete: boolean
-// }
+import { action, computed, makeObservable, observable, reaction } from 'mobx'
+import { Todo } from './entities/Todo'
 
 export class TodoStore {
     todoList: Todo[] = []
@@ -14,15 +9,15 @@ export class TodoStore {
             todoList: observable,
             completedTasks: computed,
             add: action,
-            remove: action
+            remove: action,
         })
         reaction(
             () => this.todoList.filter(todo => !todo.done),
             uncompletedTasks => {
                 if (uncompletedTasks.length > 5) {
-                    alert("Dude. You've got too much on your plate.")
+                    alert('Dude. You\'ve got too much on your plate.')
                 }
-            }
+            },
         )
     }
 
