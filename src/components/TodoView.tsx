@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { observer } from 'mobx-react'
-import { TodoViewModel } from './TodoViewModel'
+import { TodoViewModel } from '../viewmodels/TodoViewModel'
 import SingleTodoView from './SingleTodoView'
 import { Todo } from '../stores/entities/Todo'
 import routes from '../consts/routes'

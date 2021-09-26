@@ -3,11 +3,10 @@ import { MobxRouter, startRouter } from '@simraki/mobx-router'
 import { inject, InjectorContext, provider } from 'react-ioc'
 import RootStore from '../stores/RootStore'
 import routes from '../consts/routes'
-import { TodoViewModel } from './TodoViewModel'
-import { TodoStore } from '../stores/TodoStore'
+import { dependencies } from '../consts/dependencies'
 
 
-class Main extends React.Component {
+class Main extends React.PureComponent {
 
     static contextType = InjectorContext
     private store = inject<RootStore>(this, RootStore)
@@ -21,4 +20,4 @@ class Main extends React.Component {
     }
 }
 
-export default provider(RootStore, TodoStore, TodoViewModel)(Main)
+export default provider(...dependencies)(Main)
