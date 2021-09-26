@@ -30,6 +30,8 @@ const config: DevConfig = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "public/index.html",
+            favicon: "public/favicon.ico",
+            title: "Hello",
         }),
         new ForkTsCheckerWebpackPlugin({
             async: false
