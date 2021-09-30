@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { observer } from 'mobx-react'
 import routes from '../consts/routes'
-// import { store } from '../stores/RootStore'
 import { Link } from '@simraki/mobx-router'
 import { useInstance } from 'react-ioc'
 import RootStore from '../stores/RootStore'
+import { Button, ConfigProvider } from 'antd'
 
 
-const App = (): JSX.Element => {
+const App: FC = () => {
 
     const store = useInstance(RootStore)
 
     function handle(): void {
-        store.app.setUser('101')
+
+        ConfigProvider.config({
+            theme: {
+                primaryColor: '#9a0c44',
+            },
+        })
     }
 
     return (
@@ -22,7 +27,8 @@ const App = (): JSX.Element => {
                     {'router.appendPathList(\'user/:name\')'}
                 </div>
                 <div>
-                    <button onClick={handle}> go home</button>
+                    <div><Button onClick={handle}> go home</Button></div>
+                    <div><Button onClick={() => store.router.goTo(routes.scheduler)}> go scheduler</Button></div>
                     <Link router={store.router} route={routes.todos}> Go to todos </Link>
                     <p>Current pathname: {location.pathname}</p>
                 </div>

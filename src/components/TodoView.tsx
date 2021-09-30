@@ -6,6 +6,7 @@ import { Todo } from '../stores/entities/Todo'
 import routes from '../consts/routes'
 import { useInstance } from 'react-ioc'
 import RootStore from '../stores/RootStore'
+import { Button } from 'antd'
 
 
 const TodoView: FC = () => {
@@ -16,11 +17,9 @@ const TodoView: FC = () => {
     return (
         <div>
             <h1>React & MobX Todo List!</h1>
-            <button onClick={() => store.router.goTo(routes.home)}> go home</button>
+            <Button block onClick={() => store.router.goTo(routes.home)}> go home</Button>
             <p>Current pathname: {store.router.currentPath}</p>
-            <p>
-                <button onClick={() => viewModel.add()}>New Todo</button>
-            </p>
+            <Button onClick={() => viewModel.add()}>New Todo</Button>
             {viewModel.todos.map((todo: Todo) => {
                 return (<SingleTodoView key={todo.id} viewModel={viewModel} todo={todo}/>)
             })}

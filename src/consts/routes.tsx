@@ -3,6 +3,7 @@ import TodoView from '../components/TodoView'
 import RootStore from '../stores/RootStore'
 import App from '../components/App'
 import { Route } from '@simraki/mobx-router'
+import Timetable from '../components/Timetable'
 
 
 const routes = {
@@ -13,6 +14,10 @@ const routes = {
     todos: new Route<RootStore>({
         path: '/todos',
         component: <TodoView/>,
+    }),
+    scheduler: new Route<RootStore>({
+        path: '/scheduler',
+        component: <Timetable/>,
     }),
 }
 export default routes
