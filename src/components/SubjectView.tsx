@@ -3,17 +3,19 @@ import { Subject } from './Timetable'
 import { Card } from 'antd'
 
 interface ISubjectView {
-    subject: Subject
+    subjects: Subject[]
 }
 
-const SubjectView: FC<ISubjectView> = ({subject}) => {
+const SubjectView: FC<ISubjectView> = ({subjects}) => {
 
     return (
         <>
-            <Card size="small" title={(subject as Subject).title} bordered={false}>
-                <p>{(subject as Subject).place}</p>
-                <p>{(subject as Subject).teacher}</p>
-            </Card>
+            {subjects.map((subj, index) => (
+                <Card size="small" title={subj.title} bordered={false} key={index} style={{background: 'green'}}>
+                    <p>{subj.place}</p>
+                    <p>{subj.teacher}</p>
+                </Card>
+            ))}
         </>
     )
 }
